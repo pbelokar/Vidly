@@ -10,7 +10,7 @@ namespace Vidly.Controllers
     {
         public ActionResult Index()
         {
-            //sample
+            //sample code
             return View(); 
         }
 
