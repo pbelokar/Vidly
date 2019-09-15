@@ -1,0 +1,23 @@
+﻿@model List<VidlyNew.Models.Customer>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>List of Customers</h2>
+
+@if (Model.Count == 0)
+{
+    <p>No customers added yet.</p>
+}
+
+
+<ul>
+    @foreach (var customer in Model)
+    {
+        <li>
+            @*<p>@customer.Name</p>*@
+            @Html.ActionLink(@customer.Name, "Details", new { Id = @customer.Id })
+        </li>
+    }
+</ul>
+

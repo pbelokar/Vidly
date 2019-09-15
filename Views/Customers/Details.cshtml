@@ -1,0 +1,21 @@
+﻿@model VidlyNew.Models.Customer
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div class="form-control">
+    <div class="form-group">
+        <div style="font-size:larger">
+
+            @Html.LabelFor(m => m.Id):
+            @Model.Id
+
+            @Html.LabelFor(m => m.Name):
+
+            @Model.Name
+        </div>
+    </div>
+
+</div>
