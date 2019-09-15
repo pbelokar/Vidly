@@ -5,17 +5,25 @@
 
 <h2>Details</h2>
 
-<div class="form-control">
-    <div class="form-group">
-        <div style="font-size:larger">
+<ul>
+    <li>
+        @Html.LabelFor(m => m.Id):
+        @Model.Id
+    </li>
+    <li>
+        @Html.LabelFor(m => m.Name):
 
-            @Html.LabelFor(m => m.Id):
-            @Model.Id
-
-            @Html.LabelFor(m => m.Name):
-
-            @Model.Name
-        </div>
-    </div>
-
-</div>
+        @Model.Name
+    </li>
+    <li>
+        @Html.LabelFor(m => m.MembershipType):
+        @Model.MembershipType.Name
+    </li>
+    @if (Model.DateofBirth != null)
+    {
+        <li>
+            @Html.LabelFor(m=> m.DateofBirth):
+            @Model.DateofBirth
+        </li>
+    }
+</ul>

@@ -195,6 +195,26 @@
     <Compile Include="Migrations\201909152044205_PopulateMembershipTypes.Designer.cs">
       <DependentUpon>201909152044205_PopulateMembershipTypes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909152053345_ApplyAnnotationstoCustomerName.cs" />
+    <Compile Include="Migrations\201909152053345_ApplyAnnotationstoCustomerName.Designer.cs">
+      <DependentUpon>201909152053345_ApplyAnnotationstoCustomerName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909152118124_AddNametoMembershipType.cs" />
+    <Compile Include="Migrations\201909152118124_AddNametoMembershipType.Designer.cs">
+      <DependentUpon>201909152118124_AddNametoMembershipType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909152121231_UpdateNametoMembershipType.cs" />
+    <Compile Include="Migrations\201909152121231_UpdateNametoMembershipType.Designer.cs">
+      <DependentUpon>201909152121231_UpdateNametoMembershipType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909152129535_AddDataAnnotationtoMembershipTypeName.cs" />
+    <Compile Include="Migrations\201909152129535_AddDataAnnotationtoMembershipTypeName.Designer.cs">
+      <DependentUpon>201909152129535_AddDataAnnotationtoMembershipTypeName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909152152370_AddedDOBinCustomer.cs" />
+    <Compile Include="Migrations\201909152152370_AddedDOBinCustomer.Designer.cs">
+      <DependentUpon>201909152152370_AddedDOBinCustomer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -300,6 +320,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909152044205_PopulateMembershipTypes.resx">
       <DependentUpon>201909152044205_PopulateMembershipTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909152053345_ApplyAnnotationstoCustomerName.resx">
+      <DependentUpon>201909152053345_ApplyAnnotationstoCustomerName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909152118124_AddNametoMembershipType.resx">
+      <DependentUpon>201909152118124_AddNametoMembershipType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909152121231_UpdateNametoMembershipType.resx">
+      <DependentUpon>201909152121231_UpdateNametoMembershipType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909152129535_AddDataAnnotationtoMembershipTypeName.resx">
+      <DependentUpon>201909152129535_AddDataAnnotationtoMembershipTypeName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909152152370_AddedDOBinCustomer.resx">
+      <DependentUpon>201909152152370_AddedDOBinCustomer.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
