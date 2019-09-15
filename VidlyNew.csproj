@@ -179,6 +179,22 @@
     <Compile Include="Migrations\201909152008595_InitialModel.Designer.cs">
       <DependentUpon>201909152008595_InitialModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909152028052_AddIsSubscribedToNewsletter.cs" />
+    <Compile Include="Migrations\201909152028052_AddIsSubscribedToNewsletter.Designer.cs">
+      <DependentUpon>201909152028052_AddIsSubscribedToNewsletter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909152031199_AddMembershipType.cs" />
+    <Compile Include="Migrations\201909152031199_AddMembershipType.Designer.cs">
+      <DependentUpon>201909152031199_AddMembershipType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909152039585_MoviesAdded.cs" />
+    <Compile Include="Migrations\201909152039585_MoviesAdded.Designer.cs">
+      <DependentUpon>201909152039585_MoviesAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909152044205_PopulateMembershipTypes.cs" />
+    <Compile Include="Migrations\201909152044205_PopulateMembershipTypes.Designer.cs">
+      <DependentUpon>201909152044205_PopulateMembershipTypes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -272,6 +288,18 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201909152008595_InitialModel.resx">
       <DependentUpon>201909152008595_InitialModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909152028052_AddIsSubscribedToNewsletter.resx">
+      <DependentUpon>201909152028052_AddIsSubscribedToNewsletter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909152031199_AddMembershipType.resx">
+      <DependentUpon>201909152031199_AddMembershipType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909152039585_MoviesAdded.resx">
+      <DependentUpon>201909152039585_MoviesAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909152044205_PopulateMembershipTypes.resx">
+      <DependentUpon>201909152044205_PopulateMembershipTypes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
