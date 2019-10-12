@@ -22,6 +22,8 @@ namespace VidlyNew.Migrations
             AddColumn("dbo.Customers", "MembershipType_Id", c => c.Int());
             CreateIndex("dbo.Customers", "MembershipType_Id");
             AddForeignKey("dbo.Customers", "MembershipType_Id", "dbo.MembershipTypes", "Id");
+            //explicitely added on experimental basis
+            AddForeignKey("dbo.Customers", "MembershipTypeId", "dbo.MembershipTypes", "Id");
         }
         
         public override void Down()

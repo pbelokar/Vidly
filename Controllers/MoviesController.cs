@@ -5,40 +5,36 @@ using System.Web;
 using System.Web.Mvc;
 using VidlyNew.Models;
 using VidlyNew.ViewModel;
+using System.Data.Entity;
 
 namespace VidlyNew.Controllers
 {
     public class MoviesController : Controller
     {
-        List<Movie> movies = new List<Movie>() {
-                new Movie{ Id = 1, Name = "Shrek!"},
-                new Movie{ Id = 2, Name = "Matrix"},
+        public ApplicationDbContext _context;
 
-            };
+        public MoviesController()
+        {
+            _context = new ApplicationDbContext();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+        }
+
         public ActionResult Random()
         {
-            var movie = new Movie() { Id = 1, Name = "Shrek!" };
-            var customers = new List<Customer>
-            {
-                new Customer { Name = "customer1" },
-                new Customer { Name = "customer2" }
-            };
-
+            var movie = _context.Movies.Where<Movie>(m => m.Id == 1).FirstOrDefault();
+            var customers = _context.Customers.ToList();
 
             var randomviewmodel = new RandomMovieViewModel()
             {
                 customers = customers,
-                movie = movie
+                movie = movie,
             };
 
             return View(randomviewmodel);
-
-
-        }
-        public ActionResult Edit(int id)
-        {
-
-            return Content("Id =" + id);
         }
 
         public ActionResult Index(int? pageIndex, string sortBy)
@@ -51,7 +47,7 @@ namespace VidlyNew.Controllers
             if (string.IsNullOrEmpty(sortBy))
                 sortBy = "Name";
 
-          
+            var movies = _context.Movies.Include(m => m.Genre).ToList();
 
             return View(movies);
         }
@@ -64,9 +60,53 @@ namespace VidlyNew.Controllers
 
         public ActionResult Details(int Id)
         {
-            var selectedmovie = movies.Where<Movie>(s => s.Id == Id).FirstOrDefault();
-
-            return View(selectedmovie);
+            var selectedMovie = _context.Movies.Include(g => g.Genre).Where<Movie>(m => m.Id == Id).FirstOrDefault();
+            return View(selectedMovie);
         }
+
+        public ActionResult Save(int? Id)
+        {
+            var newmovie = new Movie();
+            ViewBag.Title = "New Movie";
+            if (Id.HasValue)
+            {
+                ViewBag.Title = "Edit Movie";
+                newmovie = _context.Movies.Where<Movie>(m => m.Id == Id).Single();
+            }
+
+            var movieModel = new SaveMovieViewModel(newmovie)
+            {
+                Genres = _context.Genres.ToList()
+            };
+
+            TempData["SuccessMessage"] = "Saved Successfully";
+
+            return View(movieModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Save(Movie movie)
+        {
+            if (!ModelState.IsValid)
+            {
+                var newMoviemodel = new SaveMovieViewModel(movie) {
+                    Genres = _context.Genres.ToList(),
+                };
+                return View(newMoviemodel);
+            }
+                if (_context.Movies.Where<Movie>(m => m.Id == movie.Id).Count() > 0)
+                {
+                    _context.Entry<Movie>(movie).State = EntityState.Modified;
+                }
+                else
+                {
+                    _context.Movies.Add(movie);
+                }
+
+            _context.SaveChanges();
+            return RedirectToAction("Index", "Movies");
+        }
+
     }
 }
