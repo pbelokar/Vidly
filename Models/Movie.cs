@@ -32,5 +32,7 @@ namespace VidlyNew.Models
         [Display(Name = "Genre")]
         public int GenreId { get; set; }
 
+        public int NumberAvailable { get; set; }    
+
     }
 }

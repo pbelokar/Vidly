@@ -8,6 +8,10 @@ namespace VidlyNew.Models
         [Required]
         [Display(Name = "Email")]
         public string Email { get; set; }
+
+        [Required]
+        [Display(Name = "Driving License")]
+        public string DrivingLicense { get; set; }
     }
 
     public class ExternalLoginListViewModel
@@ -64,6 +68,10 @@ namespace VidlyNew.Models
 
     public class RegisterViewModel
     {
+        [Required]
+        [StringLength(255)]
+        [Display(Name ="Driving License")]
+        public string DrivingLicense { get; set; }
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]

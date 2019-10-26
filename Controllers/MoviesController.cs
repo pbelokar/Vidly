@@ -37,19 +37,13 @@ namespace VidlyNew.Controllers
             return View(randomviewmodel);
         }
 
-        public ActionResult Index(int? pageIndex, string sortBy)
+        
+        public ActionResult Index()
         {
+            if (User.IsInRole(RoleNames.canManageMovies))
+                return View("Index");
 
-            if (!pageIndex.HasValue)
-            {
-                pageIndex = 1;
-            }
-            if (string.IsNullOrEmpty(sortBy))
-                sortBy = "Name";
-
-            var movies = _context.Movies.Include(m => m.Genre).ToList();
-
-            return View(movies);
+                return View("ReadOnlyList");
         }
 
         [Route("movies/released/{year}/{month:regex(\\d{2})}")]
@@ -64,6 +58,7 @@ namespace VidlyNew.Controllers
             return View(selectedMovie);
         }
 
+        [Authorize(Roles = RoleNames.canManageMovies)]
         public ActionResult Save(int? Id)
         {
             var newmovie = new Movie();
@@ -85,24 +80,26 @@ namespace VidlyNew.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = RoleNames.canManageMovies)]
         [ValidateAntiForgeryToken]
         public ActionResult Save(Movie movie)
         {
             if (!ModelState.IsValid)
             {
-                var newMoviemodel = new SaveMovieViewModel(movie) {
+                var newMoviemodel = new SaveMovieViewModel(movie)
+                {
                     Genres = _context.Genres.ToList(),
                 };
                 return View(newMoviemodel);
             }
-                if (_context.Movies.Where<Movie>(m => m.Id == movie.Id).Count() > 0)
-                {
-                    _context.Entry<Movie>(movie).State = EntityState.Modified;
-                }
-                else
-                {
-                    _context.Movies.Add(movie);
-                }
+            if (_context.Movies.Where<Movie>(m => m.Id == movie.Id).Count() > 0)
+            {
+                _context.Entry<Movie>(movie).State = EntityState.Modified;
+            }
+            else
+            {
+                _context.Movies.Add(movie);
+            }
 
             _context.SaveChanges();
             return RedirectToAction("Index", "Movies");

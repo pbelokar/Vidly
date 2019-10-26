@@ -19,7 +19,7 @@ namespace VidlyNew.Controllers.api
             _dbcontext = new ApplicationDbContext();
         }
         //get // api/customer
-        public IEnumerable<CustomerDto> GetCustomers()
+        public IEnumerable<CustomerDto> GetCustomers(int? query)
         {
             return _dbcontext.Customers
                 .Include(c=>c.MembershipType)
