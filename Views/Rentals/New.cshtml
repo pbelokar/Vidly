@@ -24,59 +24,36 @@
 {
     <script>
         //customers
-        //$(document).ready(function () {
-        //    var vm = {};
-        //    var customers = new Bloodhound({
-        //        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
-        //        queryTokenizer: Bloodhound.tokenizers.whitespace,
-        //        remote: {
-        //            url: '/api/customers?query=%QUERY',
-        //            wildcard: '%QUERY'
-        //        }
-        //    });
-
-        //    $('#customer').typeahead(
-        //        {
-        //            minLength: 3,
-        //            highlight: true
-        //        }
-        //        , {
-        //            name: 'Customers',
-        //            display: 'name',
-        //            source: customers
-        //        });
-        //}
-        //).on("typeahead:typeahead:select", function (e, customer) {
-        //    vm.customerId = customer.id;
-
-
-
-        //});
-
-
-        //movies
-
         $(document).ready(function () {
-            var movies = new Bloodhound({
+            var vm = {};
+            var customers = new Bloodhound({
                 datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
                 queryTokenizer: Bloodhound.tokenizers.whitespace,
                 remote: {
-                    url: 'api/movies?query=%QUERY',
+                    url: '/api/customers?query=%QUERY',
                     wildcard: '%QUERY'
                 }
             });
 
-            $('#movie').typeahead(
-                {
-                    minLength: 1,
-                    highlight: true
-                }, {
-                    name: 'movies',
-                    display: 'name',
-                    source: movies
-                });
-        });
 
+            $('#customer').typeahead(
+                {
+                    minLength: 3,
+                    highlight: true
+                }
+                , {
+                    name: 'Customers',
+                    display: 'name',
+                    source: customers
+                });
+
+        }
+        ).on("typeahead:typeahead:select", function (e, customer) {
+            vm.customerId = customer.id;
+
+
+
+        });
 
 
     </script>
